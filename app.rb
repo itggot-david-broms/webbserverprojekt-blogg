@@ -32,8 +32,14 @@ post('/login') do
     not_password = result[0]["Password"]
     if BCrypt::Password.new(not_password) == params["pass"]
         session[:loggedin] = true
-        redirect('/welcome')
+        session[:user] = params["name"]
+        redirect('/')
     else
         redirect('/lolno')
     end
+end
+
+post('/logout') do
+    session.destroy
+    redirect('/')
 end
