@@ -16,6 +16,10 @@ get('/register') do
     slim(:reg)
 end
 
+get('/profile') do 
+    slim(:profile)
+end
+
 post('/create') do
     name = params["name"]
     email = params["email"]
@@ -35,7 +39,8 @@ post('/login') do
         session[:user] = params["name"]
         redirect('/')
     else
-        redirect('/lolno')
+        session[:loginfail] = true
+        redirect('/')
     end
 end
 

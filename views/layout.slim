@@ -7,5 +7,7 @@ html lang="en"
         title help
     body
     h1 bloggiga bloggar för bloggande bloggare
+    -if session[:loggedin]
+        p you are #{session[:user]}
     
     ==yield    
